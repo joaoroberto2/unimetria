@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:adm="http://github.com/adminfaces"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Unimetria</title>
+</h:head>
+
+<h:body styleClass="hold-transition login-page">
+	<p:growl autoUpdate="true" sticky="true" />
+
+
+	<div class="login-box" style="border-color: black">
+		<div class="login-logo">
+			<b>Unimetria</b>
+		</div>
+		<!-- /.login-logo -->
+		<div class="box login-box-body">
+			<h:form>
+				<p:messages closable="true" />
+				<p:panelGrid columns="1" style="text-align: center;"
+					columnClasses="ui-grid-col-12" layout="grid"
+					styleClass="ui-fluid  ">
+					<p class="login-box-msg">Olá aluno! Informe seu CPF abaixo para registrar sua Entrada/Saída </p>
+
+					<p:inputText value="" type="text"
+						styleClass="form-control" placeholder="CPF" required="true" id="itCpf"
+						autocomplete="off" requiredMessage="CPF Obrigatório" />
+		
+					<input type="button" value="Confirmar" class="btn btn-primary form-control" onclick="launchBio();" ></input>
+
+					<br />
+				</p:panelGrid>
+
+			</h:form>
+
+
+<SCRIPT type="text/javascript">
+	function launchBio(){
+		var cpf = document.getElementById("j_idt7:itCpf").value;
+		if(cpf != null || cpf != "")
+			location = "leitor:auth-" + cpf;
+		else
+			alert("Informe seu CPF");
+	}
+</SCRIPT>
+
+
+
+		</div>
+		<!-- /.login-box-body -->
+	</div>
+
+
+	<h:outputScript library="js" name="prism.js" target="head" />
+	<h:outputScript library="js" name="admintemplate.js" target="head" />
+	<adm:ripple />
+
+
+</h:body>
+</html>
